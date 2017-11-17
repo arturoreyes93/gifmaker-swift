@@ -80,7 +80,7 @@ private struct Group {
         frameCount: Int,
         delayTime: Float,
         loopCount: Int = 0,
-        completion: (result: NSURL?) -> Void) {
+        completion: (_ result: NSURL?) -> Void) {
         let gift = Regift(
             sourceFileURL: sourceFileURL,
             destinationFileURL: destinationFileURL,
@@ -110,7 +110,7 @@ private struct Group {
         duration: Float,
         frameRate: Int,
         loopCount: Int = 0,
-        completion: (result: NSURL?) -> Void) {
+        completion: (_ result: NSURL?) -> Void) {
         let gift = Regift(
             sourceFileURL: sourceFileURL,
             destinationFileURL: destinationFileURL,
@@ -232,7 +232,7 @@ private struct Group {
         
         do {
             
-            if let caption = caption, font = font {
+            if let caption = caption, let font = font {
                 return try createGIFForTimePointsAndCaption(timePoints, fileProperties: fileProperties, frameProperties: frameProperties, frameCount: frameCount, caption: caption, font:font)
             }else{
                 return try createGIFForTimePoints(timePoints, fileProperties: fileProperties, frameProperties: frameProperties, frameCount: frameCount)
@@ -297,7 +297,7 @@ private struct Group {
         gifGroup.enter()
         
         generator.generateCGImagesAsynchronouslyForTimes(times, completionHandler: { (requestedTime, image, actualTime, result, error) in
-            guard let imageRef = image where error == nil else {
+            guard let imageRef = image, error == nil else {
                 print("An error occurred: \(error), image is \(image)")
                 dispatchError = true
                 gifGroup.leave()
