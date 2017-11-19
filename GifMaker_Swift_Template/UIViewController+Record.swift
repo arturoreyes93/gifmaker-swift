@@ -10,17 +10,24 @@ import Foundation
 import UIKit
 import MobileCoreServices
 
-extension UIViewController {
+extension UIViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
     @IBAction func launchVideoCamera(sender: AnyObject) {
         
+        self.present(pickercontrollerWithSource(UIImagePickerControllerSourceTypeCamera), animated: true, completion: nil)
     }
     
-    func pickercontrollerWithSource(_ source: UIImagePickerControllerSourceType) {
+    func pickercontrollerWithSource(_ source: UIImagePickerControllerSourceType) -> UIImagePickerController {
         
         let picker = UIImagePickerController()
         picker.sourceType = source
-        pricker.mediaTypes
+        pricker.mediaTypes = [kUTTypeMovie as String]
+        picker.allowsEditing = false
+        picker.delegate = self
+        
+        return picker
     }
+    
+    public func imagePickerController(picker: UIImagePickerController)
 }
 
