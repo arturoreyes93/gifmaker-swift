@@ -35,15 +35,15 @@ extension Regift {
         
         // Draw image
         UIGraphicsBeginImageContext(image.size)
-        let firstRect = CGRect(0,0,image.size.width,image.size.height)
+        let firstRect = CGRect(x: 0,y: 0,width: image.size.width,height: image.size.height)
         image.draw(in: firstRect)
         
         // Draw text
         let sideMargin = (image.size.width - adjustedWidth)/2.0
         let bottomMargin = image.size.height/6.0
-        let textOrigin  = CGPoint(sideMargin, image.size.height - bottomMargin)
-        let secondRect = CGRect(textOrigin.x,textOrigin.y, adjustedWidth, adjustedHeight)
-        text.drawWith(secondRect, options:.UsesLineFragmentOrigin, attributes: attributes, context:nil)
+        let textOrigin  = CGPoint(x: sideMargin,y: (image.size.height - bottomMargin))
+        let secondRect = CGRect(x: textOrigin.x,y: textOrigin.y,width: adjustedWidth, height: adjustedHeight)
+        text.draw(with: secondRect, options:.usesLineFragmentOrigin, attributes: attributes, context:nil)
         
         // Capture combined image and text
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
