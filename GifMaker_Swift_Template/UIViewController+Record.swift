@@ -12,11 +12,6 @@ import MobileCoreServices
 
 extension UIViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    @IBAction func launchVideoCamera(sender: AnyObject) {
-        
-        self.present(pickercontrollerWithSource(UIImagePickerControllerSourceType), animated: true, completion: nil)
-    }
-    
     func pickercontrollerWithSource(_ source: UIImagePickerControllerSourceType) -> UIImagePickerController {
         
         let picker = UIImagePickerController()
