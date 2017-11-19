@@ -4,7 +4,6 @@
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
-        <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13174"/>
         <capability name="Aspect ratio constraints" minToolsVersion="5.1"/>
         <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
@@ -209,6 +208,10 @@
                             <color key="tintColor" red="1" green="0.25490196079999999" blue="0.43921568630000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         </barButtonItem>
                     </navigationItem>
+                    <connections>
+                        <outlet property="captionTExtField" destination="Hx5-Iw-gBr" id="N9f-r7-FrP"/>
+                        <outlet property="gifImageView" destination="Idg-S9-dYE" id="g4S-d5-t6T"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="XSQ-pK-rKN" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -269,6 +272,11 @@
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" title="Preview" id="SWX-N6-oaS"/>
+                    <connections>
+                        <outlet property="gifImageView" destination="HQu-c2-zTO" id="O2g-39-aWg"/>
+                        <outlet property="saveButton" destination="lnU-9g-0xe" id="iYp-in-4Ta"/>
+                        <outlet property="shareButton" destination="xoi-MZ-GNH" id="wpW-Mt-OlR"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCC-tI-bRp" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
@@ -330,10 +338,10 @@
             </objects>
             <point key="canvasLocation" x="1215" y="66"/>
         </scene>
-        <!--View Controller-->
+        <!--Welcome View Controller-->
         <scene sceneID="MO7-ys-2QJ">
             <objects>
-                <viewController storyboardIdentifier="WelcomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aXC-Xw-CZL" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="aXC-Xw-CZL" customClass="WelcomeViewController" customModule="GifMaker_Swift_Template" sceneMemberID="viewController">
                     <layoutGuides>
                         <viewControllerLayoutGuide type="top" id="FzV-E8-2I8"/>
                         <viewControllerLayoutGuide type="bottom" id="IJD-un-28D"/>
@@ -470,6 +478,7 @@
                     </view>
                     <navigationItem key="navigationItem" id="GOk-gI-dlu"/>
                     <connections>
+                        <outlet property="defaultGifImageView" destination="Wun-5B-Ruk" id="H48-9o-RnJ"/>
                         <segue destination="gN0-HT-VRx" kind="show" identifier="showGifEditor" id="wkV-9i-gKS"/>
                     </connections>
                 </viewController>

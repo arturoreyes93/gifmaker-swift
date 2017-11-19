@@ -33,7 +33,7 @@ extension UIViewController : UIImagePickerControllerDelegate, UINavigationContro
     }
     
     public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
-        dismiss(animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
+        dismiss(animated: true, completion: nil)
     }
     
 }

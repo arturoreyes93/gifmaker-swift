@@ -7,3 +7,10 @@
 //
 
 import Foundation
+import UIKit
+
+class WelcomeViewController: UIViewController {
+    
+    @IBOutlet weak var defaultGifImageView: UIImageView!
+    
+}

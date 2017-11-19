@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+class PreviewViewController: UIViewController {
+    
+    
+    @IBOutlet weak var gifImageView: UIImageView!
+    
+    @IBOutlet weak var shareButton: UIButton!
+    @IBOutlet weak var saveButton: UIButton!
+}

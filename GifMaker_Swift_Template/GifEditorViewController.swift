@@ -7,3 +7,11 @@
 //
 
 import Foundation
+import UIKit
+
+class GigEditorViewController : UIViewController {
+    
+    @IBOutlet weak var gifImageView: UIImageView!
+    @IBOutlet weak var captionTExtField: UITextField!
+    
+}
