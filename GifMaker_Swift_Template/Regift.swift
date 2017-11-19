@@ -350,7 +350,7 @@ private struct Group {
         
         CGImageDestinationSetProperties(destination, fileProperties as CFDictionary)
         
-        let asset = AVURLAsset(URL: sourceFileURL as URL)
+        let asset = AVURLAsset(url: sourceFileURL as URL)
         let generator = AVAssetImageGenerator(asset: asset)
         
         generator.appliesPreferredTrackTransform = true
@@ -361,9 +361,9 @@ private struct Group {
         
         for time in timePoints {
             do {
-                let imageRef = try generator.copyCGImageAtTime(time, actualTime: nil)
-                let imageRefWithCaption = addCaption(imageRef,text:caption, font:font)
-                CGImageDestinationAddImage(destination, imageRefWithCaption, frameProperties as CFDictionaryRef)
+                let imageRef = try generator.copyCGImage(at: time, actualTime: nil)
+                let imageRefWithCaption = addCaption(image: imageRef,text:caption, font:font)
+                CGImageDestinationAddImage(destination, imageRefWithCaption, frameProperties as CFDictionary)
             } catch let error as NSError {
                 print("An error occurred: \(error)")
                 throw RegiftError.AddFrameToDestination

@@ -28,6 +28,5 @@ extension UIViewController : UIImagePickerControllerDelegate, UINavigationContro
         return picker
     }
     
-    public func imagePickerController(picker: UIImagePickerController)
 }
 
