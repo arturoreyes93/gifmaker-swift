@@ -267,7 +267,7 @@ private struct Group {
         if self.destinationFileURL != nil {
             fileURL = self.destinationFileURL
         } else {
-            let temporaryFile = (NSTemporaryDirectory() as NSString).appendingPathComponentappendingPathComponent(Regift.FileName)
+            let temporaryFile = (NSTemporaryDirectory() as NSString).appendingPathComponent(Regift.FileName)
             fileURL = NSURL(fileURLWithPath: temporaryFile)
         }
         
@@ -288,7 +288,7 @@ private struct Group {
         // Transform timePoints to times for the async asset generator method.
         var times = [NSValue]()
         for time in timePoints {
-            times.append(NSValue(CMTime: time))
+            times.append(NSValue(time: time))
         }
         
         // Create a dispatch group to force synchronous behavior on an asynchronous method.
