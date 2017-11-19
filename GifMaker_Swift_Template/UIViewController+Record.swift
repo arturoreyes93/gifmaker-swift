@@ -14,14 +14,14 @@ extension UIViewController : UIImagePickerControllerDelegate, UINavigationContro
     
     @IBAction func launchVideoCamera(sender: AnyObject) {
         
-        self.present(pickercontrollerWithSource(UIImagePickerControllerSourceTypeCamera), animated: true, completion: nil)
+        self.present(pickercontrollerWithSource(UIImagePickerControllerSourceType), animated: true, completion: nil)
     }
     
     func pickercontrollerWithSource(_ source: UIImagePickerControllerSourceType) -> UIImagePickerController {
         
         let picker = UIImagePickerController()
         picker.sourceType = source
-        pricker.mediaTypes = [kUTTypeMovie as String]
+        picker.mediaTypes = [kUTTypeMovie as String]
         picker.allowsEditing = false
         picker.delegate = self
         

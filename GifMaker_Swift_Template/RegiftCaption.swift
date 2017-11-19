@@ -13,23 +13,23 @@ import CoreGraphics
 extension Regift {
     
     
-    func addCaption(image: CGImageRef, text: NSString, font: UIFont) -> CGImage {
+    func addCaption(image: CGImage, text: NSString, font: UIFont) -> CGImage {
         let image = UIImage(CGImage:image)
         
         // Text attributes
-        let color = UIColor.whiteColor()
-        var attributes = [NSForegroundColorAttributeName:color, NSFontAttributeName:font, NSStrokeColorAttributeName : UIColor.blackColor(), NSStrokeWidthAttributeName : -4]
+        let color = UIColor.white
+        var attributes = [NSAttributedStringKey.foregroundColor:color, NSAttributedStringKey.font:font, NSAttributedStringKey.strokeColor : UIColor.black, NSAttributedStringKey.strokeWidth : -4] as [NSAttributedStringKey : Any]
         
         // Get scale factor
-        let testSize:CGSize =  text.sizeWithAttributes(attributes)
+        let testSize:CGSize =  text.size(withAttributes: attributes)
         let scaleFactor = testSize.height/360
         
         // Apply scale factor to attributes
         let scaledFont: UIFont = UIFont(name: "HelveticaNeue-CondensedBlack", size:image.size.height * scaleFactor)!
-        attributes[NSFontAttributeName] = scaledFont
+        attributes[NSAttributedStringKey.font] = scaledFont
         
         // Text size
-        let size:CGSize =  text.sizeWithAttributes(attributes)
+        let size:CGSize =  text.size(withAttributes: attributes)
         let adjustedWidth = ceil(size.width)
         let adjustedHeight = ceil(size.height)
         
@@ -48,6 +48,6 @@ extension Regift {
         // Capture combined image and text
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
-        return newImage!.CGImage!
+        return newImage!.cgImage!
     }
 }
