@@ -12,15 +12,28 @@ import MobileCoreServices
 
 extension UIViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
     
-    func pickercontrollerWithSource(_ source: UIImagePickerControllerSourceType) -> UIImagePickerController {
+    @IBAction func launchCamera(sender: AnyObject) {
         
-        let picker = UIImagePickerController()
-        picker.sourceType = source
-        picker.mediaTypes = [kUTTypeMovie as String]
-        picker.allowsEditing = false
-        picker.delegate = self
+        let recordVideoController = UIImagePickerController()
+        recordVideoController.sourceType = UIImagePickerControllerSourceType.camera
+        recordVideoController.mediaTypes = [kUTTypeMovie as String]
+        recordVideoController.delegate = self
         
-        return picker
+        present(recordVideoController, animated: true, completion: nil)
+    }
+    
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+        let mediaType = info[UIImagePickerControllerMediaType] as! String
+        
+        if mediaType == kUTTypeMovie as String {
+            let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
+            UISaveVideoAtPathToSavedPhotosAlbum(videoURL.path!, nil, nil, nil)
+            dismiss(animated: true, completion: nil)
+        }
+    }
+    
+    public func imagePickerControllerDidCancel(_ picker: UIImagePickerController) {
+        dismiss(animated: true, completion: <#T##(() -> Void)?##(() -> Void)?##() -> Void#>)
     }
     
 }
