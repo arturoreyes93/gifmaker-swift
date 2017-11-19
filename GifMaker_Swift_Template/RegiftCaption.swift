@@ -14,7 +14,7 @@ extension Regift {
     
     
     func addCaption(image: CGImage, text: NSString, font: UIFont) -> CGImage {
-        let image = UIImage(CGImage:image)
+        let image = UIImage(cgImage: image)
         
         // Text attributes
         let color = UIColor.white
@@ -35,15 +35,15 @@ extension Regift {
         
         // Draw image
         UIGraphicsBeginImageContext(image.size)
-        let firstRect = CGRectMake(0,0,image.size.width,image.size.height)
-        image.drawInRect(firstRect)
+        let firstRect = CGRect(0,0,image.size.width,image.size.height)
+        image.draw(in: firstRect)
         
         // Draw text
         let sideMargin = (image.size.width - adjustedWidth)/2.0
         let bottomMargin = image.size.height/6.0
-        let textOrigin  = CGPointMake(sideMargin, image.size.height - bottomMargin)
-        let secondRect = CGRectMake(textOrigin.x,textOrigin.y, adjustedWidth, adjustedHeight)
-        text.drawWithRect(secondRect, options:.UsesLineFragmentOrigin, attributes: attributes, context:nil)
+        let textOrigin  = CGPoint(sideMargin, image.size.height - bottomMargin)
+        let secondRect = CGRect(textOrigin.x,textOrigin.y, adjustedWidth, adjustedHeight)
+        text.drawWith(secondRect, options:.UsesLineFragmentOrigin, attributes: attributes, context:nil)
         
         // Capture combined image and text
         let newImage = UIGraphicsGetImageFromCurrentImageContext()
