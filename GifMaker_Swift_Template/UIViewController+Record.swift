@@ -10,19 +10,20 @@ import Foundation
 import UIKit
 import MobileCoreServices
 
-extension UIViewController : UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+extension UIViewController : UIImagePickerControllerDelegate {
     
     @IBAction func launchCamera(sender: AnyObject) {
         
         let recordVideoController = UIImagePickerController()
         recordVideoController.sourceType = UIImagePickerControllerSourceType.camera
         recordVideoController.mediaTypes = [kUTTypeMovie as String]
+        recordVideoController.allowsEditing = true
         recordVideoController.delegate = self
         
         present(recordVideoController, animated: true, completion: nil)
     }
     
-    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : AnyObject]) {
+    public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
         
         if mediaType == kUTTypeMovie as String {
@@ -38,3 +39,6 @@ extension UIViewController : UIImagePickerControllerDelegate, UINavigationContro
     
 }
 
+extension UIViewController: UINavigationControllerDelegate {
+    
+}
