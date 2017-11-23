@@ -9,9 +9,18 @@
 import Foundation
 import UIKit
 
-class GigEditorViewController : UIViewController {
+class GifEditorViewController : UIViewController {
     
     @IBOutlet weak var gifImageView: UIImageView!
     @IBOutlet weak var captionTExtField: UITextField!
     
+    var gifURL: NSURL?
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        if let gifURL = gifURL {
+            let gifFromRecording = UIImage.gif(url: gifURL.absoluteString!)
+            gifImageView.image = gifFromRecording
+        }
+    }
 }
