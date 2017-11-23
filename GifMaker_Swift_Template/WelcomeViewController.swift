@@ -13,4 +13,14 @@ class WelcomeViewController: UIViewController {
     
     @IBOutlet weak var defaultGifImageView: UIImageView!
     
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        let proofOfConceptGif = UIImage.gif(name: "tinaFeyHiFive")
+        defaultGifImageView.image = proofOfConceptGif
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    }
 }

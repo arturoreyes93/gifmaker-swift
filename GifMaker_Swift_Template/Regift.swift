@@ -204,7 +204,7 @@ private struct Group {
      - returns: The path to the created GIF, or `nil` if there was an error creating it.
      */
     
-    public func createGif(caption caption : String?, font : UIFont?) -> NSURL? {
+    public func createGif(caption : String?, font : UIFont?) -> NSURL? {
         
         let fileProperties = [kCGImagePropertyGIFDictionary as String:[
             kCGImagePropertyGIFLoopCount as String: NSNumber(value: Int32(loopCount))],
@@ -298,7 +298,7 @@ private struct Group {
         
         generator.generateCGImagesAsynchronously(forTimes: times, completionHandler: { (requestedTime, image, actualTime, result, error) in
             guard let imageRef = image, error == nil else {
-                print("An error occurred: \(error), image is \(image)")
+                print("An error occurred: \(String(describing: error)), image is \(String(describing: image))")
                 dispatchError = true
                 gifGroup.leave()
                 return
