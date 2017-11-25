@@ -260,6 +260,9 @@
                                         <state key="normal" title="CREATE AND SAVE">
                                             <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         </state>
+                                        <connections>
+                                            <action selector="shareGif:" destination="cB7-Y1-ZFX" eventType="touchUpInside" id="LDS-uk-KfU"/>
+                                        </connections>
                                     </button>
                                 </subviews>
                             </stackView>
@@ -279,6 +282,7 @@
                         <outlet property="gifImageView" destination="HQu-c2-zTO" id="O2g-39-aWg"/>
                         <outlet property="saveButton" destination="lnU-9g-0xe" id="iYp-in-4Ta"/>
                         <outlet property="shareButton" destination="xoi-MZ-GNH" id="wpW-Mt-OlR"/>
+                        <outlet property="shareGif" destination="xoi-MZ-GNH" id="Nxx-xL-icL"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KCC-tI-bRp" userLabel="First Responder" sceneMemberID="firstResponder"/>

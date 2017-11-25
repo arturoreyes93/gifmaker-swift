@@ -25,6 +25,20 @@ class PreviewViewController: UIViewController {
         if let gifImage = gif?.gifImage {
             gifImageView.image = gifImage
         }
-        
     }
+    
+    @IBAction func shareGif(_ sender: Any) {
+        let url: NSURL = (self.gif?.url)!
+        let animatedGIF = NSData(contentsOf: url as URL)
+        let itemsToShare = [animatedGIF]
+        
+        let activityVC = UIActivityViewController(activityItems: itemsToShare, applicationActivities: nil)
+        
+        activityVC.completionWithItemsHandler = {(activity, completed, items, error) in
+            if (completed) {
+                self.navigationController?.popToRootViewController(animated: true)
+            }
+        }
+    }
+    
 }
