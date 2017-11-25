@@ -374,17 +374,6 @@
                                 <color key="shadowColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <size key="shadowOffset" width="0.0" height="1"/>
                             </label>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHz-KD-sx7">
-                                <rect key="frame" x="157.5" y="587" width="60" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="hG8-tD-wew"/>
-                                    <constraint firstAttribute="width" constant="60" id="nKa-D8-wqn"/>
-                                </constraints>
-                                <state key="normal" title="Button" image="createButton"/>
-                                <connections>
-                                    <action selector="launchCameraWithSender:" destination="aXC-Xw-CZL" eventType="touchUpInside" id="YpC-8F-mVT"/>
-                                </connections>
-                            </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="Mvh-6r-tbq">
                                 <rect key="frame" x="16" y="407" width="343" height="180"/>
                                 <subviews>
@@ -469,6 +458,17 @@
                                     </mask>
                                 </variation>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="tHz-KD-sx7">
+                                <rect key="frame" x="157" y="587" width="60" height="60"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="60" id="hG8-tD-wew"/>
+                                    <constraint firstAttribute="width" constant="60" id="nKa-D8-wqn"/>
+                                </constraints>
+                                <state key="normal" title="Button" image="createButton"/>
+                                <connections>
+                                    <action selector="presentVideoOptionsWithSender:" destination="aXC-Xw-CZL" eventType="touchUpInside" id="HN8-Cd-JjJ"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
