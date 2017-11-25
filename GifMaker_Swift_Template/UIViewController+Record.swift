@@ -32,7 +32,7 @@ extension UIViewController : UIImagePickerControllerDelegate {
         if mediaType == kUTTypeMovie as String {
             let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
             convertVideoToGIF(videoURL: videoURL)
-            UISaveVideoAtPathToSavedPhotosAlbum(videoURL.path!, nil, nil, nil)
+            //UISaveVideoAtPathToSavedPhotosAlbum(videoURL.path!, nil, nil, nil)
             dismiss(animated: true, completion: nil)
             
             
@@ -49,13 +49,18 @@ extension UIViewController : UIImagePickerControllerDelegate {
     func convertVideoToGIF(videoURL: NSURL) {
         let regift = Regift(sourceFileURL: videoURL, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
         let gifURL = regift.createGif()
-        displayGIF(url: gifURL!)
+        saveGIf(url: gifURL!, videoURL: videoURL)
     }
     
-    func displayGIF(url: NSURL) {
+    func saveGIf(url: NSURL, videoURL: NSURL) {
+        let newGif = Gif(url: url, videoURL: videoURL, caption: nil)
+        displayGIF(newGif)
+    }
+    
+    func displayGIF(_ gif: Gif) {
         
         let gifEditorVC = storyboard?.instantiateViewController(withIdentifier: "GifEditorViewController") as! GifEditorViewController
-        gifEditorVC.gifURL = url
+        gifEditorVC.gif = gif
         navigationController?.pushViewController(gifEditorVC, animated: true)
         
     }

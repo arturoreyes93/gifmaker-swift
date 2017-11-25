@@ -16,4 +16,15 @@ class PreviewViewController: UIViewController {
     
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
+    
+    var gif: Gif?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        if let gifImage = gif?.gifImage {
+            gifImageView.image = gifImage
+        }
+        
+    }
 }
