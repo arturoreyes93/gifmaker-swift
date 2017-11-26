@@ -39,6 +39,8 @@ class PreviewViewController: UIViewController {
                 self.navigationController?.popToRootViewController(animated: true)
             }
         }
+        
+        navigationController?.present(activityVC, animated: true, completion: nil)
     }
     
 }

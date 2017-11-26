@@ -13,10 +13,6 @@ import UIKit
 
 class GifEditorViewController : UIViewController, UITextFieldDelegate {
     
-    let frameCount = 16
-    let delayTime: Float = 0.2
-    let loopCount = 0 // 0 means loop forever
-    
     @IBOutlet weak var gifImageView: UIImageView!
     @IBOutlet weak var captionTextField: UITextField!
     
@@ -45,7 +41,7 @@ class GifEditorViewController : UIViewController, UITextFieldDelegate {
         let previewVC = storyboard?.instantiateViewController(withIdentifier: "PreviewViewController") as! PreviewViewController
         gif?.caption = captionTextField.text
         
-        let regift = Regift(sourceFileURL: (gif?.videoURL)!, destinationFileURL: nil, frameCount: frameCount, delayTime: delayTime, loopCount: loopCount)
+        let regift = Regift(sourceFileURL: (gif?.videoURL)!, destinationFileURL: nil, frameCount: UIViewController.frameCount, delayTime: UIViewController.delayTime, loopCount: UIViewController.loopCount)
         let captionFont: UIFont = captionTextField.font!
         let gifURL: NSURL = regift.createGif(caption: captionTextField.text, font: captionFont)!
         let newGif = Gif(url: gifURL, videoURL: (gif?.videoURL)!, caption: captionTextField.text)
