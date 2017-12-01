@@ -7,3 +7,13 @@
 //
 
 import Foundation
+import UIKit
+
+class GifCell: UICollectionViewCell {
+    
+    @IBOutlet weak var gifImageView: UIImageView!
+    
+    func configureGif(gif: Gif) {
+        gifImageView.image = gif.gifImage
+    }
+}

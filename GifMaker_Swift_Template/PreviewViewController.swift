@@ -9,6 +9,10 @@
 import Foundation
 import UIKit
 
+protocol PreviewViewControllerDelegate {
+    func previewVC(preview: PreviewViewController, didSaveGif gif: Gif)
+}
+
 class PreviewViewController: UIViewController {
     
     
@@ -43,4 +47,7 @@ class PreviewViewController: UIViewController {
         navigationController?.present(activityVC, animated: true, completion: nil)
     }
     
+    @IBAction func createAndSave(_ sender: Any) {
+        navigationController?.popViewController(animated: true)
+    }
 }
