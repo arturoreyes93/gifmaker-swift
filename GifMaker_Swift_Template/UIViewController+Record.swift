@@ -10,6 +10,7 @@ import Foundation
 import UIKit
 import MobileCoreServices
 import AVFoundation
+import Photos
 
 extension UIViewController : UIImagePickerControllerDelegate {
     
@@ -20,13 +21,16 @@ extension UIViewController : UIImagePickerControllerDelegate {
     
     @IBAction func presentVideoOptions(sender: AnyObject) {
         if !(UIImagePickerController.isSourceTypeAvailable(UIImagePickerControllerSourceType.camera)) {
-        launchPhotoLibrary()
+            checkPermission()
+            launchPhotoLibrary()
+        
         } else {
             let newGifActionSheet: UIAlertController = UIAlertController(title: "Create New Gif", message: nil, preferredStyle: UIAlertControllerStyle.actionSheet)
             let recordVideo: UIAlertAction = UIAlertAction(title: "Record Video", style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
                 self.launchCamera()
             })
             let chooseFromExisting = UIAlertAction(title: "Choose from Existing" , style: UIAlertActionStyle.default, handler: { (UIAlertAction) in
+                self.checkPermission()
                 self.launchPhotoLibrary()
             })
             
@@ -63,7 +67,7 @@ extension UIViewController : UIImagePickerControllerDelegate {
 
     public func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         let mediaType = info[UIImagePickerControllerMediaType] as! String
-        
+
         if mediaType == kUTTypeMovie as String {
             let videoURL = info[UIImagePickerControllerMediaURL] as! NSURL
             
@@ -124,10 +128,12 @@ extension UIViewController : UIImagePickerControllerDelegate {
         
         exporter?.exportAsynchronously {
             croppedURL = exporter?.outputURL! as! NSURL
-            if let start = start {
-                self.convertVideoToGIF(videoURL: croppedURL!, start: start, duration: duration)
-            } else {
-                self.convertVideoToGIF(videoURL: croppedURL!)
+            DispatchQueue.main.async {
+                if let start = start {
+                    self.convertVideoToGIF(videoURL: croppedURL!, start: start, duration: duration)
+                } else {
+                    self.convertVideoToGIF(videoURL: croppedURL!)
+                }
             }
         }
     }
@@ -181,6 +187,30 @@ extension UIViewController : UIImagePickerControllerDelegate {
         gifEditorVC.gif = gif
         navigationController?.pushViewController(gifEditorVC, animated: true)
         
+    }
+    // csource: https://stackoverflow.com/questions/44465904/photopicker-discovery-error-error-domain-pluginkit-code-13
+    func checkPermission() {
+        let photoAuthorizationStatus = PHPhotoLibrary.authorizationStatus()
+        switch photoAuthorizationStatus {
+        case .authorized:
+            print("Access is granted by user")
+        case .notDetermined:
+            PHPhotoLibrary.requestAuthorization({
+                (newStatus) in
+                print("status is \(newStatus)")
+                if newStatus ==  PHAuthorizationStatus.authorized {
+                    /* do stuff here */
+                    print("success")
+                }
+            })
+            print("It is not determined until now")
+        case .restricted:
+            // same same
+            print("User do not have access to photo album.")
+        case .denied:
+            // same same
+            print("User has denied the permission.")
+        }
     }
     
 }
