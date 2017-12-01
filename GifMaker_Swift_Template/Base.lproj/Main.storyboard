@@ -496,7 +496,6 @@
                     <navigationItem key="navigationItem" id="GOk-gI-dlu"/>
                     <connections>
                         <outlet property="defaultGifImageView" destination="Wun-5B-Ruk" id="H48-9o-RnJ"/>
-                        <segue destination="gN0-HT-VRx" kind="show" identifier="showGifEditor" id="wkV-9i-gKS"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IJp-h7-HxK" userLabel="First Responder" sceneMemberID="firstResponder"/>
