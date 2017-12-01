@@ -9,7 +9,8 @@
 import Foundation
 import UIKit
 
-protocol PreviewViewControllerDelegate {
+protocol PreviewViewControllerDelegate: class {
+    //source : https://stackoverflow.com/questions/29025876/why-custom-delegate-in-ios-is-not-called
     func previewVC(preview: PreviewViewController, didSaveGif gif: Gif)
 }
 
@@ -17,11 +18,11 @@ class PreviewViewController: UIViewController {
     
     
     @IBOutlet weak var gifImageView: UIImageView!
-    
     @IBOutlet weak var shareButton: UIButton!
     @IBOutlet weak var saveButton: UIButton!
     
     var gif: Gif?
+    var previewDelegate: PreviewViewControllerDelegate?
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -48,6 +49,7 @@ class PreviewViewController: UIViewController {
     }
     
     @IBAction func createAndSave(_ sender: Any) {
-        navigationController?.popViewController(animated: true)
+        previewDelegate?.previewVC(preview: self, didSaveGif: gif!)
+        navigationController?.popToRootViewController(animated: true)
     }
 }

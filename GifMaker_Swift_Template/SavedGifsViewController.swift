@@ -9,7 +9,7 @@
 import Foundation
 import UIKit
 
-class SavedGifsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout, PreviewViewControllerDelegate {
+class SavedGifsViewController: UIViewController, UICollectionViewDelegate, UICollectionViewDataSource, UICollectionViewDelegateFlowLayout {
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emptyView: UIImageView!
@@ -29,12 +29,6 @@ class SavedGifsViewController: UIViewController, UICollectionViewDelegate, UICol
         
         collectionView.delegate = self
         collectionView.dataSource = self
-    }
-    
-    func previewVC(preview: PreviewViewController, didSaveGif gif: Gif) {
-        gif.gifData = NSData(contentsOf: gif.url! as URL)
-        savedGifs.append(gif)
-        print("previewVC called")
     }
     
     //UICollectionViewDelegate Methods
@@ -67,3 +61,11 @@ class SavedGifsViewController: UIViewController, UICollectionViewDelegate, UICol
     
 }
 
+extension SavedGifsViewController : PreviewViewControllerDelegate {
+    
+    func previewVC(preview: PreviewViewController, didSaveGif gif: Gif) {
+        gif.gifData = NSData(contentsOf: gif.url! as URL)
+        savedGifs.append(gif)
+        print("previewVC called")
+    }
+}

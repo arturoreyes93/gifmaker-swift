@@ -17,6 +17,8 @@ class GifEditorViewController : UIViewController, UITextFieldDelegate {
     @IBOutlet weak var captionTextField: UITextField!
     
     var gif: Gif?
+    var savedGifsViewController =  SavedGifsViewController()
+    
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
@@ -47,6 +49,7 @@ class GifEditorViewController : UIViewController, UITextFieldDelegate {
         let newGif = Gif(url: gifURL, videoURL: (gif?.videoURL)!, caption: captionTextField.text)
         
         previewVC.gif = newGif
+        previewVC.previewDelegate = savedGifsViewController
        navigationController?.pushViewController(previewVC, animated: true)
        
     }
