@@ -14,7 +14,11 @@ class SavedGifsViewController: UIViewController, UICollectionViewDelegate, UICol
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var emptyView: UIImageView!
     
-    var savedGifs = [Gif]()
+    var savedGifs = [Gif]() {
+        didSet {
+            navigationController?.title = savedGifs.isEmpty ? "" : "My Collection"
+        }
+    }
     let cellMargin: CGFloat = 12.0
     
     var gifsFilePath: String {

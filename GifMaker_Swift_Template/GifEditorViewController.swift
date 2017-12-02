@@ -18,7 +18,6 @@ class GifEditorViewController : UIViewController, UITextFieldDelegate {
     
     var gif: Gif?
     
-    
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()

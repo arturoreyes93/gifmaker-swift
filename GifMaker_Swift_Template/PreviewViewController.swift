@@ -27,6 +27,7 @@ class PreviewViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        setButtonsStyle()
         if let gifImage = gif?.gifImage {
             gifImageView.image = gifImage
         }
@@ -51,5 +52,12 @@ class PreviewViewController: UIViewController {
     @IBAction func createAndSave(_ sender: Any) {
         previewDelegate?.previewVC(preview: self, didSaveGif: gif!)
         navigationController?.popToRootViewController(animated: true)
+    }
+    
+    func setButtonsStyle() {
+        saveButton.layer.cornerRadius = 4.0
+        shareButton.layer.cornerRadius = 4.0
+        shareButton.layer.borderColor = UIColor(red: 255.0/255.0, green: 65.0/255.0, blue: 112.0/255.0, alpha: 1.0).cgColor
+        shareButton.layer.borderWidth = 1.0
     }
 }

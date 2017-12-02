@@ -17,6 +17,5 @@ class GifCell: UICollectionViewCell {
         DispatchQueue.main.async {
             self.gifImageView.image = gif.gifImage
         }
-        
     }
 }
