@@ -75,14 +75,18 @@ extension UIViewController : UIImagePickerControllerDelegate {
             let start = info["_UIImagePickerControllerVideoEditingStart"] as? NSNumber
             let end = info["_UIImagePickerControllerVideoEditingEnd"] as? NSNumber
             var duration: NSNumber?
-            if let start = start {
-                duration = NSNumber(value: (end!.floatValue) - (start.floatValue))
-                cropVideoToSquare(rawVideoURL: videoURL, start: Float(start), duration: Float(duration!))
-            } else {
-                duration = nil
-                cropVideoToSquare(rawVideoURL: videoURL)
-                
+            
+            DispatchQueue.main.async {
+                if let start = start {
+                    duration = NSNumber(value: (end!.floatValue) - (start.floatValue))
+                    self.cropVideoToSquare(rawVideoURL: videoURL, start: Float(start), duration: Float(duration!))
+                } else {
+                    duration = nil
+                    self.cropVideoToSquare(rawVideoURL: videoURL)
+                    
+                }
             }
+            
             
             //UISaveVideoAtPathToSavedPhotosAlbum(videoURL.path!, nil, nil, nil)
             dismiss(animated: true, completion: nil)

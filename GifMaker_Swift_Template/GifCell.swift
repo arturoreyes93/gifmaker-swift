@@ -14,6 +14,9 @@ class GifCell: UICollectionViewCell {
     @IBOutlet weak var gifImageView: UIImageView!
     
     func configureGif(gif: Gif) {
-        gifImageView.image = gif.gifImage
+        DispatchQueue.main.async {
+            self.gifImageView.image = gif.gifImage
+        }
+        
     }
 }
