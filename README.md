@@ -1,4 +1,5 @@
-<img src="https://s3-us-west-1.amazonaws.com/udacity-content/degrees/catalog-images/nd003.png" alt="iOS Developer Nanodegree logo" height="70" >
+<img src="https://github.com/reyesm93/gifmaker-swift/blob/master/README-image.png" width="400">
+
 
 # GifMaker (Swift)
 
